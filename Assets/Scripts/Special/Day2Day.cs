@@ -182,4 +182,9 @@ public class Day2Day : MonoBehaviour
             SetButton(false);
         }
     }
+
+    public void QuitButton()
+    {
+        ChatManager.Instance.StartDialogue(dialogues2[4]);
+    }
 }

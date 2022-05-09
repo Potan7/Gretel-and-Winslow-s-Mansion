@@ -67,7 +67,7 @@ public class AfterDialogue : MonoBehaviour
 
             case 7:
                 //주방 전화지시 따르기
-                GameObject.Find("wall1").transform.Find("KeyPaper").gameObject.SetActive(true);
+                GameObject.Find("wall1").transform.GetChild(0).gameObject.SetActive(true);
                 GameObject.Find("wall1").transform.Find("Blender").transform.GetChild(0).GetChild(1).GetComponent<UseItem>().work = 3;
                 break;
 
@@ -107,6 +107,11 @@ public class AfterDialogue : MonoBehaviour
 
             case 13:
                 StartCoroutine(Day3NightEnd());
+                break;
+
+            case 14:
+                FindObjectOfType<Inventory>().ResetItem();
+                StartCoroutine(GoGreenHouse());
                 break;
         }
     }
@@ -215,6 +220,8 @@ public class AfterDialogue : MonoBehaviour
 
     IEnumerator GoGreenHouse()
     {
+        GameObject.Find("wall1").transform.GetChild(0).gameObject.SetActive(false);
+
         Interact.StopInteract = true;
         yield return StartCoroutine(Fade(0.01f, fade));
 

@@ -38,6 +38,18 @@ public class Inventory : MonoBehaviour
     }
     //들어온 ID에 해당하는 아이템 제거
 
+    public void ResetItem()
+    {
+        foreach (Slot slot in slots)
+        {
+            if (slot.itemID != 0)
+            {
+                itemCount--;
+                slot.RemoveItem();
+            }
+        }
+    }
+
     public void SelectedItem(int postion, int id)
     {
         for (int i = 0; i < slots.Length; i++)

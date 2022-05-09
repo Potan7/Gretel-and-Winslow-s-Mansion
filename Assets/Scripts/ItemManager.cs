@@ -254,6 +254,11 @@ public class ItemManager : MonoBehaviour
                 ChatManager.Instance.SearchChat("물부터 넣어야한다.");
                 break;
 
+            case 26:
+                // 물 넣은 티팟 잘못 사용 (불부터 켜야함)
+                ChatManager.Instance.SearchChat("불부터 켜야한다.");
+                break;
+
             case 21:
                 //시안 가루 사용 (잘못 사용 X)
                 ChatManager.Instance.SearchChat("시안 가루를 넣었다.");
