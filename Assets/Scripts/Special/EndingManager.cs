@@ -276,7 +276,7 @@ public class EndingManager : MonoBehaviour
 
     void EndGame()
     {
-        GameManager.Instance._gameData = null;
+        GameManager.Instance.ResetSaveFile();
 
         DestroyImmediate(GameManager.Instance.gameObject);
         DestroyImmediate(GameObject.Find("Canvas").gameObject);

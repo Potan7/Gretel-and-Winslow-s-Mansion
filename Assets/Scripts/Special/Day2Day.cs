@@ -34,6 +34,8 @@ public class Day2Day : MonoBehaviour
         display.beforeRoom = beforeRoom;
         fade = button.GetFade();
 
+        FindObjectOfType<MapManager>().TeleportStop = true;
+
         StartCoroutine(StartDay2());
         fade.gameObject.SetActive(true);
     }

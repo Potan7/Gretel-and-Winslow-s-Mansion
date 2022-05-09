@@ -15,18 +15,15 @@ public class DebugFunction : MonoBehaviour
     public string[] sceneNames;
     int day3Mission = 0;
 
-    private void Start()
-    {
-        debug.SetActive(false);
-    }
-
+#if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && debug.activeSelf == false)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             debug.SetActive(true);
         }
     }
+#endif
 
     public void SceneSlider()
     {

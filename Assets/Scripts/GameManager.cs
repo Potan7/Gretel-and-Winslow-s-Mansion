@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour
 
             _gameData = new GameData();
             TakeOrder = 0;
+            SceneProgress = 0;
         }
     }
 
@@ -157,10 +158,8 @@ public class GameManager : MonoBehaviour
     {
         _gameData.TakeOrder = TakeOrder;
         gameData.SceneProgress = SceneProgress;
-        string ToJsonData = JsonUtility.ToJson(gameData);
-        string filePath = Application.persistentDataPath + GameDataFileName;
-        File.WriteAllText(filePath, ToJsonData);
-        Debug.Log("저장 완료");
+
+        OnlySaveFile();
     }
 
     public void OnlySaveFile()
@@ -169,5 +168,13 @@ public class GameManager : MonoBehaviour
         string filePath = Application.persistentDataPath + GameDataFileName;
         File.WriteAllText(filePath, ToJsonData);
         Debug.Log("저장 완료");
+    }
+
+    public void ResetSaveFile()
+    {
+        _gameData = new GameData();
+
+        OnlySaveFile();
+        LoadGameData();
     }
 }

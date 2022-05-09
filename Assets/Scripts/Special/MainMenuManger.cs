@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class MainMenuManger : MonoBehaviour
 {
     public Image image;
+    public Button loadButton;
+    public GameObject CheckMsg;
 
     MenuManger menu;
     SoundManager sound;
@@ -21,13 +23,49 @@ public class MainMenuManger : MonoBehaviour
         menu.ESCStop = true;
     }
 
+    private void Update()
+        // 세이브파일이 존재하지 않을 경우 불러오기 버튼을 비활성화함.
+    {
+        if (GameManager.Instance.gameData.SceneProgress == 0)
+        {
+            loadButton.interactable = false;
+        }
+        else
+        {
+            loadButton.interactable = true;
+        }
+    }
+
 
     public void StartButton()
         //시작 버튼
     {
-        GameManager.Instance._gameData = null;
-        GameManager.Instance.LoadGameData();
-        GameManager.Instance.SaveGameData();
+        if (GameManager.Instance.gameData.SceneProgress == 0)
+        {
+            GameStart();
+        }
+        else
+        {
+            CheckMsg.SetActive(true);
+            // 세이브파일이 있을 경우 경고메세지 띄움.
+        }
+    }
+
+    public void checkMsgYes()
+    {
+        CheckMsg.SetActive(false);
+        GameStart();
+    }
+
+    public void checkMsgNo()
+    {
+        CheckMsg.SetActive(false);
+    }
+
+    void GameStart()
+        // 게임 시작
+    {
+        GameManager.Instance.ResetSaveFile();
 
         image.gameObject.SetActive(true);
         //페이드 아웃용 이미지 활성화.

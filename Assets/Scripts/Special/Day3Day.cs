@@ -55,6 +55,8 @@ public class Day3Day : MonoBehaviour
         // 이후에 미치는 프로세스 영향을 위해 7로 고정하여 재설정
         GameManager.Instance.SetProgress(7);
 
+        FindObjectOfType<MapManager>().TeleportStop = false;
+
         display.beforeRoom = beforeRoom;
         fade = button.GetFade();
         fade.gameObject.SetActive(true);

@@ -13,5 +13,7 @@ public class Day1Day : MonoBehaviour
         button.SetAllbuttons(true);
 
         button.GetPhone().gameObject.SetActive(false);
+
+        FindObjectOfType<MapManager>().TeleportStop = true;
     }
 }
